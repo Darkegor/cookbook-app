@@ -1,0 +1,16 @@
+
+<div>
+  <div class="search-bar"><input [(ngModel)]="searchTerm" placeholder="поиск по названию рецепта" /></div>
+  <div class = recipes>
+  <div *ngFor="let recipe of filteredRecipes">
+    <h3 >{{ recipe.name }}</h3>
+
+    <div *ngIf="recipe.image">
+      <img [src]="recipe.image" alt="Recipe Image" style="width: 150px; height: 150px;" />
+    </div>
+    <p ><strong>дата создания:</strong> {{ recipe.createdAt | date: 'short' }}</p>
+    <button mat-raised-button [routerLink]="'/recipes/edit/' + recipe.id">изменить</button>
+    <button mat-raised-button (click)="deleteRecipe(recipe.id)">удалить</button>
+  </div>
+  </div>
+</div>
